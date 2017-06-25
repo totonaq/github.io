@@ -1,0 +1,101 @@
+@media all and (max-width: 1368px) {
+  .contacts-wrap {
+    width: auto; } }
+@media all and (min-width: 480px) {
+  .skills-info-progress-item {
+    width: 150px; }
+
+  .work-content-block-testimonial {
+    margin-top: 90px; }
+
+  .contacts-form-input {
+    width: 30%; }
+
+  footer .footer-copy, footer .footer-resume {
+    font: 0.9rem "RobotoRegular"; } }
+@media all and (min-width: 600px) {
+  .main-sandwich-menu {
+    display: inline-block; }
+
+  .contacts-around-wrap {
+    left: -135px;
+    width: 345px; }
+
+  .contacts-form-status {
+    width: 70%; } }
+@media all and (min-width: 992px) {
+  .main {
+    height: 100vh;
+    padding-bottom: 0; }
+    .main-wrap-heading {
+      font-size: 3.5rem;
+      margin-top: 15vh; }
+    .main-wrap-buttons {
+      justify-content: flex-start; }
+    .main-arrow {
+      display: block; }
+
+  .skills-info {
+    padding: 4rem 0 0; }
+    .skills-info-progress-item {
+      box-shadow: 2px 2px 10px #999; }
+  .skills-blocks {
+    align-items: flex-start;
+    flex-flow: row wrap; }
+    .skills-blocks-item {
+      width: 33%;
+      margin-bottom: 0;
+      text-align: center; }
+
+  .work-content-block {
+    max-width: 100%; }
+    .work-content-block:nth-of-type(1) {
+      padding: 50px 0 70px; }
+    .work-content-block-descr, .work-content-block-img {
+      max-width: 100%;
+      width: 50%; }
+    .work-content-block-descr {
+      text-align: left; }
+      .work-content-block-descr-heading {
+        margin: 0; }
+    .work-content-block:nth-of-type(2n+1) .work-content-block-descr {
+      order: 0;
+      padding-right: 10%; }
+    .work-content-block:nth-of-type(2n) .work-content-block-descr {
+      padding-left: 10%; }
+  .work-content-testimonial-cite {
+    font-size: 1.2rem; }
+
+  #html {
+    position: relative;
+    transform: rotateZ(10deg);
+    transition: all 0.3s ease-in-out; }
+
+  #css {
+    position: relative;
+    transform: rotateZ(-13deg);
+    transition: all 0.3s ease-in-out; }
+
+  #js {
+    position: relative;
+    transform: rotateZ(9deg);
+    transition: all 0.3s ease-in-out; }
+
+  #php {
+    position: relative;
+    transform: rotateZ(-8deg);
+    transition: all 0.3s ease-in-out; }
+
+  #wp {
+    position: relative;
+    transform: rotateZ(10deg);
+    transition: all 0.3s ease-in-out; }
+
+  .contacts-around-wrap {
+    left: 0;
+    width: 300px; } }
+@media all and (min-width: 1368px) {
+  .main-sandwich-wrap {
+    right: calc(50% - 460px); } }
+
+/*# sourceMappingURL=media.css.map */

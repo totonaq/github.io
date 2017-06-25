@@ -1,0 +1,109 @@
+@mixin rotateSkill($deg)
+	position: relative
+	transform: rotateZ($deg)
+	transition: all .3s ease-in-out
+	
+@media all and (max-width: 1368px)
+	.contacts-wrap
+		width: auto
+
+@media all and (min-width: 480px)
+	.skills-info-progress-item
+		width: 150px
+	.work-content-block-testimonial
+		margin-top: 90px
+	.contacts-form-input
+		width: 30%
+	footer .footer-copy, footer .footer-resume
+		font: .9rem 'RobotoRegular'
+
+@media all and (min-width: 600px)
+	.main-sandwich-menu
+		display: inline-block
+	.contacts-around-wrap
+		left: -135px
+		width: 345px
+	.contacts-form-status
+		width: 70%
+
+@media all and (min-width: 992px)
+	.main
+		height: 100vh
+		padding-bottom: 0
+		&-wrap
+			&-heading
+				font-size: 3.5rem
+				margin-top: 15vh
+			&-buttons
+				justify-content: flex-start
+			&-button
+				//margin: 3rem 1rem 0 0
+		&-arrow
+			display: block
+
+	.skills
+		&-info
+			padding: 4rem 0 0
+			&-progress-item
+				box-shadow: 2px 2px 10px #999
+		&-blocks
+			align-items: flex-start
+			flex-flow: row wrap
+			&-item
+				width: 33%
+				margin-bottom: 0
+				text-align: center
+		
+	.work-content
+		&-block
+			max-width: 100%
+			&:nth-of-type(1)
+				padding: 50px 0 70px
+			&-descr, &-img
+				max-width: 100%
+				width: 50%
+			&-descr
+				text-align: left
+				&-heading
+					margin: 0
+			&:nth-of-type(2n+1) .work-content-block-descr
+				order: 0
+				padding-right: 10%
+			&:nth-of-type(2n) .work-content-block-descr
+				padding-left: 10%
+		&-testimonial-cite
+			font-size: 1.2rem
+		
+	#html
+		@include rotateSkill(10deg)
+		&:hover
+			//transform: rotateZ(0) scale(1.2)
+			//z-index: 1
+	#css
+		@include rotateSkill(-13deg)
+		&:hover
+			//transform: rotateZ(0) scale(1.2)
+			//z-index: 1
+	#js
+		@include rotateSkill(9deg)
+		&:hover
+			//transform: rotateZ(0) scale(1.2)
+			//z-index: 1
+	#php
+		@include rotateSkill(-8deg)
+		&:hover
+			//transform: rotateZ(0) scale(1.2)
+			//z-index: 1
+	#wp
+		@include rotateSkill(10deg)
+		&:hover
+			//transform: rotateZ(0) scale(1.2)
+			//z-index: 1
+	.contacts-around-wrap
+		left: 0
+		width: 300px
+
+@media all and (min-width: 1368px)
+	.main-sandwich-wrap
+		right: calc(50% - 460px)
+
