@@ -282,7 +282,6 @@
 		  font-weight: normal;
 		  src: url("../fonts/Roboto/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto/roboto-light-webfont.woff") format("woff"), url("../fonts/Roboto/roboto-light-webfont.ttf") format("truetype"); }
 	</style>
-	<?php wp_head();?>
 </head>
 <body class="page">
 <div id="preloader"><div>LOA<img src="img/logo.svg" class="spinner">ING</div></div>
@@ -534,7 +533,3 @@
 	</script>
 </body>
 </html>
-<!--<link rel="stylesheet" href="libs/animate.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/font.css">
-	<link rel="stylesheet" href="css/media.css">-->
