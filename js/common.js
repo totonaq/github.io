@@ -1,14 +1,20 @@
 $(document).ready(function() {
   var $body = $("body");
+  var $header = $("header");
+  var $footer = $("footer")
+  var $logoWrap = $(".main-wrap-logo");
+  var $logo = $(".logo-text");
+  var $imgLogo = $("#logo");
   var $mainMenu = $(".main-menu");
+  var $fixedMenu = $(".fixed-menu");
   var $sandwich = $(".main-sandwich");
-  var $sandwichBtn = $(".main-sandwich-wrap-btn");
+  //var $sandwichBtn = $(".main-sandwich-wrap-btn");
   var $navLine = $(".main-sandwich-wrap");
   var $barText = $(".main-sandwich-menu");
   var $items = $(".main-sandwich-item");
   var $listItem = $(".main-menu-nav-list-item");
   var $workItem = $(".work-item");
-  var $bgc = '';
+  //var $bgc = '';
   var $mainSection = $(".main");
  
   var $mainHead = $(".main-wrap-heading");
@@ -17,58 +23,101 @@ $(document).ready(function() {
   var $maxWidth = 600;
 
   function closeMenu() {
-    $(".main-menu").fadeOut(500);
-      $items.each(function(i) {
-         $(this).removeClass("deg" + i);
-      });
-      $navLine.css({"height":"auto"});
-      $sandwich.css({"backgroundColor": $bgc});
+    $mainMenu.fadeOut(500, function() {
+      $(this).removeAttr('style');
+    });
+    $items.each(function(i) {
+      $(this).removeClass("deg" + i);
+    });
+    $header.removeClass('transparent');
+   
+    $('html, body').css('overflow-y', 'auto');
+    $logoWrap.css('opacity', '1')
+    
   }
-
+  
   function openMenu() {
     $mainMenu.fadeIn(500);
-      $items.each(function(i) {
-         $(this).addClass("deg" + i);
-      });
-      $navLine.css({"height":"0"});
-      $sandwich.css({"backgroundColor":"transparent"});
+    $items.each(function(i) {
+      $(this).addClass("deg" + i);
+    });
+
+    $('html, body').css('overflow-y', 'hidden');
+    $header.addClass('transparent');
      
   }
-
-  $(window).scroll(function() {
-  	var height = $mainSection.height();
-    if ($(window).width() >= $maxWidth) {
-    	if($(this).scrollTop() > 60 && $(this).scrollTop() < height) {
-    		$bgc = 'rgba(255,255,255,.2)';
-    		$sandwich.css({
-    			'backgroundColor' : $bgc,
-    			'padding' : '15px 25px'
-    		});
-    		$barText.css({'display' : 'none'});
-    	} else if ($(this).scrollTop() >= height) {
-    		$bgc = 'rgba(6, 187, 194, .15)';
-    		$sandwich.css({
-    			'backgroundColor' : $bgc,
-    			'padding' : '15px 25px'
-    		});
-    		$barText.css({'display' : 'none'});
-    	} 
-    	else {
-    		$bgc = 'transparent'
-    		$sandwich.css({
-    			'backgroundColor' : $bgc,
-    			'padding' : '0'
-    		});
-        $barText.css({'display' : 'inline-block'});
-      }
+  $(window).on("orientationchange resize", function() {
+    if ($body.css('overflow-y') === 'hidden') {
+      closeMenu();
     }
-  })
+    
+  });
+  var $lastScrollTop = 0;
+  $(window).scroll(function() {
 
-  $listItem.click(function() {
+    var links = $fixedMenu.find('a');
+
+    $.each(links, function(i, elem) {
+     
+      links.eq(i).removeClass('active-item');
+
+      //if (i > 0) {
+        var len = links.length;
+        var current = $(links.eq(i).attr('href'));
+        var next = i < len - 1 ? $(links.eq(i + 1).attr('href')) : 
+        $footer;
+
+
+      
+          if ( $(window).scrollTop() >= current.offset().top && 
+              $(window).scrollTop() < next.offset().top ) {
+
+            $(this).addClass('active-item')
+          }
+     
+
+    })
+
+
+  	
+    var $st = $(this).scrollTop();
+    var $headerHeight = $header.outerHeight();
+    
+      if ($st > $lastScrollTop) {
+        $header.css({
+          'transform' : 'translateY(' + (-$headerHeight) + 'px)',
+        });
+
+        if (($(this).width() >= 768 && $(this).scrollTop() >= $mainSection.height()) ||
+          ($(this).width() < 768 && $(this).scrollTop() > 2 * $headerHeight)) {
+         
+          $header.addClass('fixed');
+          $header.removeClass('absolute');
+        }
+       
+      } else {
+        $header.css({
+          'transform' : 'translateY(0)',
+        });
+        
+        if (($(this).width() >= 768 && $(this).scrollTop() < $mainSection.height()) ||
+          ($(this).width() < 768 && $(this).scrollTop() === 0)) {
+            $header.addClass('absolute');
+            $header.removeClass('fixed');
+        } else {
+            $header.addClass('fixed');
+            $header.removeClass('absolute');
+        }
+      }
+
+    $lastScrollTop = $st;
+  });
+
+  $listItem.find('a').click(function() {
     closeMenu();
   });
 	
-	$sandwichBtn.click(function() {
+	$sandwich.click(function() {
 		if ($mainMenu.is(":visible")) {
 			closeMenu();
 		} else {
@@ -80,6 +129,7 @@ $(document).ready(function() {
   $("a[href*='#about']").mPageScroll2id();
   $("a[href*='#skills']").mPageScroll2id();
   $("a[href*='#work']").mPageScroll2id();
+  $("a[href*='#projects']").mPageScroll2id();
   $("a[href*='#contacts']").mPageScroll2id();
   $("a[href*='#contacts-wrap']").mPageScroll2id();
 
@@ -94,99 +144,82 @@ $(document).ready(function() {
     }
   });
 
-    $("#html").circliful({
-        animationStep: 8,
-        foregroundBorderWidth: 15,
-        backgroundBorderWidth: 15,
-        backgroundColor: '#ddd',//'rgba(6, 187, 194, .15)',
-        foregroundColor: 'hsl(180,100%,25%)',// 'rgba(6, 187, 194, 1)',//'#7dcdcd',// 'rgba(6, 187, 194, 1)',
-        percent: 95,
-        fontColor: '#05051c',
-        animateInView: true,
-    });
-    $("#css").circliful({
-        animationStep: 8,
-        foregroundBorderWidth: 15,
-        backgroundBorderWidth: 15,
-        backgroundColor: '#ddd',//'rgba(6, 187, 194, .15)',
-        foregroundColor: 'hsl(180,100%,25%)',//'rgba(6, 187, 194, 1)',//'#7dcdcd',//'rgba(6, 187, 194, 1)',
-        percent: 95,
-        fontColor: '#05051c',
-        animateInView: true
-    });
-    $("#js").circliful({
-        animationStep: 8,
-        foregroundBorderWidth: 15,
-        backgroundBorderWidth: 15,
-        backgroundColor: '#ddd',//'rgba(6, 187, 194, .15)',
-        foregroundColor: 'hsl(180,100%,30%)',//'rgba(6, 187, 194, 1)',//'#7dcdcd',//'rgba(6, 187, 194, 1)',
-        percent: 85,
-        fontColor: '#05051c',
-        animateInView: true
-    });
-    $("#php").circliful({
-        animationStep: 5,
-        foregroundBorderWidth: 15,
-        backgroundBorderWidth: 15,
-        backgroundColor: '#ddd',//'rgba(6, 187, 194, .15)',
-        foregroundColor: 'hsl(180,100%,33%)',//'rgba(6, 187, 194, 1)',//'#7dcdcd',//'rgba(6, 187, 194, 1)',
-        percent: 70,
-        fontColor: '#05051c',
-        animateInView: true,
-        //halfCircle: 1
-    });
-    $("#wp").circliful({
-        animationStep: 5,
-        foregroundBorderWidth: 15,
-        backgroundBorderWidth: 15,
-        backgroundColor: '#ddd',//'rgba(6, 187, 194, .15)',
-        foregroundColor: 'hsl(180,100%,37%)',//'rgba(6, 187, 194, 1)',//'#7dcdcd',//'rgba(6, 187, 194, 1)',
-        percent: 55,
-        fontColor: '#05051c',
-        animateInView: true,
-        //halfCircle: 1
-    });
-    var wow = new WOW({
-      live: true
-    })
-    wow.init();
-   /*var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["HTML5", "CSS3", "JavaScript", "PHP & MySQL", "Wordpress"],
-        datasets: [{
-            label: '%',
-            data: [95, 95, 85, 65, 55],
-            backgroundColor: [
-               
-                 'rgba(0, 160, 160, 0.2)',
-                  'rgba(0, 160, 160, 0.2)',
-                   'rgba(0, 160, 160, 0.2)',
-                    'rgba(0, 160, 160, 0.2)',
-                     'rgba(0, 160, 160, 0.2)'
-            ],
-            borderColor: [
-                'rgba(0, 160, 160, 1)',
-                'rgba(0, 160, 160, 1)',
-                'rgba(0, 160, 160, 1)',
-                'rgba(0, 160, 160, 1)',
-                'rgba(0, 160, 160, 1)'
-               
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
+var canvas = document.querySelector('#html');
+var width = canvas.width;
+var height = canvas.height;
+
+function drawCircles(element, breakPoint, rgbColorArr) {
+
+  var el = document.querySelector(element);
+  var ctx = el.getContext('2d');
+
+  var lightenColor = rgbColorArr.map(function(elem) {
+    return Math.floor((255 - elem) / 2) + elem;
+  });
+
+  for ( var i = 0; i < 10; i++ ) {
+
+    ctx.beginPath();
+    ctx.arc(10 + i * width / 10, height / 2, 8, 0, 2 * Math.PI);
+
+    if ( i < breakPoint ) {
+
+      ctx.fillStyle = "rgba(" + rgbColorArr[0] + ", " + 
+      rgbColorArr[1] + ", " + rgbColorArr[2] + ", 1)";
+
+    } else if ( i < breakPoint + 1 ) {
+
+      ctx.fillStyle = "rgba(" + lightenColor[0] + ", " + 
+      lightenColor[1] + ", " + lightenColor[2] + ", 1)";
+
+    } else {
+
+      ctx.fillStyle = "rgba(255,255,255,1)";
+      
     }
-});*/
+
+    ctx.shadowColor = "#ccc";
+    ctx.shadowOffsetX = -3;
+    ctx.shadowOffsetY = 3;
+    ctx.shadowBlur = 10;
+    ctx.fill();
+  }
+
+}
+
+drawCircles('#html', 9, [44, 48, 90]);
+drawCircles('#css', 9, [45, 130, 142]);
+drawCircles('#js', 8, [146, 139, 96]);
+drawCircles('#wp', 6, [193, 70, 70]);
+
+var wow = new WOW({
+  live: true
+});
+wow.init();
+  
+setclock("#clock", {
+  timeZone: 'current',
+  strokes: true,
+  strokeSm: false,
+  strokeOffset: 0,
+  strokeLgLength: 15,
+  strokeMdLength: 10,
+  numerals: false,
+  arrowHLength: 35,
+  arrowMLength: 45,
+  arrowSLength: 55,
+  strokeLgWidth: 3,
+  timeLabel: false,
+  diam: 130,
+  centerDiam: 3,
+  borderWidth: 0,
+  bgColor: 'transparent',
+  arrowHWidth: 3,
+  arrowMWidth: 2,
+  arrowSWidth: 1,
+  arrowColor: '#00504d',
+  strokeColor: '#00504d'
+});
 
 
 var data = {};
@@ -209,38 +242,38 @@ form.submit(function (evtObj) {
   var errors = [];
   
   $.ajax({
-        dataType: "json",
-        type: "POST",
-        url: url,
-        data: data,
-        
-        success: function(resp) {
-          $.each(resp, function(i, v) {
-            errors.push(v);
-          });
-          function noErrors(elem) {
-            return elem !== 'errorTxt';
-          }
-
-          if (errors.every(noErrors)) {
-            
-            status.html("<span class='correct'>" + 
-              resp['success'] + "</span>");
-          } else {
-            $.each(resp, function(i, v) {
-              console.log(i + " => " + v);
-              status.html("<span class='error'>" + 
-                "Одно или несколько полей заполнены некорректно" + 
-                "</span>");
-              $('input[name="' + i + '"], textarea[name="' + i + 
-                '"]').addClass(v);
-            });
-          }
-          return false;
+      dataType: "json",
+      type: "POST",
+      url: url,
+      data: data,
+      
+      success: function(resp) {
+        $.each(resp, function(i, v) {
+          errors.push(v);
+        });
+        function noErrors(elem) {
+          return elem !== 'errorTxt';
         }
-         
-      });
-      return false;
+
+        if (errors.every(noErrors)) {
+          
+          status.html("<span class='correct'>" + 
+            resp['success'] + "</span>");
+        } else {
+          $.each(resp, function(i, v) {
+            console.log(i + " => " + v);
+            status.html("<span class='error'>" + 
+              "Одно или несколько полей заполнены некорректно" + 
+              "</span>");
+            $('input[name="' + i + '"], textarea[name="' + i + 
+              '"]').addClass(v);
+          });
+        }
+        return false;
+      }
+       
+    });
+    return false;
   });
 
 });

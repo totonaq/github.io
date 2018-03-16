@@ -1,9 +1,63 @@
+@media all and (max-width: 480px) {
+  .about {
+    padding: 0; }
+
+  .skills-box-item {
+    display: none; }
+
+  .skills-box-item-wrap:nth-of-type(1) h1 {
+    color: #2c305a; }
+  .skills-box-item-wrap:nth-of-type(2) h1 {
+    color: #2d828e; }
+  .skills-box-item-wrap:nth-of-type(3) h1 {
+    color: #928b60; }
+  .skills-box-item-wrap:nth-of-type(4) h1 {
+    color: #c14646; }
+
+  .contacts-text-par {
+    font-size: 1rem; } }
+@media all and (max-width: 768px) {
+  .fixed-menu {
+    display: none; } }
+@media all and (max-width: 992px) {
+  .skills {
+    padding: 2rem 20px 2rem; }
+
+  .projects {
+    padding: 2rem 20px; }
+
+  .skills-box-item-wrap {
+    align-items: center;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 2rem;
+    text-align: left;
+    width: 100%; }
+
+  .skills-box-item {
+    flex: 1;
+    margin: 0;
+    min-width: 150px; }
+
+  .skills-box-item-content {
+    flex: 6; }
+
+  .skills-box-line {
+    display: none; }
+
+  .skills-box-descr {
+    padding-top: 0.5rem; } }
 @media all and (max-width: 1368px) {
   .contacts-wrap {
     width: auto; } }
 @media all and (min-width: 480px) {
-  .skills-info-progress-item {
-    width: 150px; }
+  .about {
+    margin-bottom: -1px;
+    padding: 1rem 2rem 4rem; }
 
   .work-content-block-testimonial {
     margin-top: 90px; }
@@ -24,21 +78,29 @@
   .contacts-form-status {
     width: 70%; } }
 @media all and (min-width: 992px) {
-  .main {
-    height: 100vh;
-    padding-bottom: 0; }
-    .main-wrap-heading {
-      font-size: 3.5rem;
-      margin-top: 15vh; }
-    .main-wrap-buttons {
-      justify-content: flex-start; }
-    .main-arrow {
-      display: block; }
+  .about {
+    padding: 0; }
+    .about-wrap {
+      border-radius: 10px 0 0 10px; }
+
+  /*.main
+   * height: 100vh
+   * padding-bottom: 0
+   * &-wrap
+   * 	&-heading
+   * 		font-size: 3.5rem
+   * 		margin-top: 15vh
+   * 	&-buttons
+   * 		justify-content: flex-start
+   * 	&-button
+   * 		//margin: 3rem 1rem 0 0
+   * &-arrow
+   * 	display: block */
+  .about-wrap, .about-photo {
+    width: 50%; }
 
   .skills-info {
     padding: 4rem 0 0; }
-    .skills-info-progress-item {
-      box-shadow: 2px 2px 10px #999; }
   .skills-blocks {
     align-items: flex-start;
     flex-flow: row wrap; }
@@ -65,31 +127,6 @@
       padding-left: 10%; }
   .work-content-testimonial-cite {
     font-size: 1.2rem; }
-
-  #html {
-    position: relative;
-    transform: rotateZ(10deg);
-    transition: all 0.3s ease-in-out; }
-
-  #css {
-    position: relative;
-    transform: rotateZ(-13deg);
-    transition: all 0.3s ease-in-out; }
-
-  #js {
-    position: relative;
-    transform: rotateZ(9deg);
-    transition: all 0.3s ease-in-out; }
-
-  #php {
-    position: relative;
-    transform: rotateZ(-8deg);
-    transition: all 0.3s ease-in-out; }
-
-  #wp {
-    position: relative;
-    transform: rotateZ(10deg);
-    transition: all 0.3s ease-in-out; }
 
   .contacts-around-wrap {
     left: 0;

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Den Telezhnikov | Front-end Developer</title>
+	<link rel="shortcut icon" href="favicon.png" type="image/png">
+
+	<style>
+		#preloader {
+			background: #fff;
+			height: 100%;
+			font: 25px arial; 
+			left: 0;
+			position: fixed;
+			text-align: center;
+			top: 0;
+			width: 100%;
+			z-index: 10000;
+		}
+		#preloader div {
+			margin-top: 40vh;
+			perspective: 95px;
+		}
+		#preloader div .spinner {
+			animation: spin 1.4s ease-in-out infinite;
+			width: 20px;
+		}
+		@-webkit-keyframes spin {
+			0% { transform: rotateY(0deg); }
+			100% { transform: rotateY(-360deg); }
+			
+		}
+		@keyframes spin {
+			0% { transform: rotateY(0deg); }
+			100% { transform: rotateY(-360deg); }
+		}
+		html, body, h1, h2, h3, p, ul, li {
+		  margin: 0;
+		  padding: 0; }
+		body {
+		  font: 16px "RobotoLight", sans-serif;
+		  overflow-x: hidden;
+		  position: relative; }
+		body:after {
+			background: url(img/main.png) center top/cover no-repeat;
+			content: '';
+			height: 100%;
+			left: 0;
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: -1; }
+		a {
+		  color: #fff;
+		  text-decoration: none; }
+		  a:focus {
+		    outline: none; }
+		button {
+		  border: none; }
+		  button:focus {
+		    outline: none; }
+		header {
+			-ms-align-items: center;
+			align-items: center;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: -o-flex;
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			padding: 2rem;
+			position: absolute;
+			/*position: fixed;*/
+			transition : background-color .5s ease-in-out, transform .3s ease-in-out, box-shadow .5s ease-in-out;
+			width: 100%;
+			z-index: 20;
+		}
+		.main-wrap-button {
+  			border-radius: 10px; }
+  		
+  		.main {
+  			  align-items: center;
+			  background-image: -webkit-linear-gradient(-90deg, rgba(0,0,0,1), transparent 100%);
+			  -o-linear-gradient(180deg, rgba(0,0,0,1), transparent 100%);
+			  linear-gradient(180deg, rgba(0,0,0,1), transparent 100%);
+			  display: -webkit-flex;
+			  display: -moz-flex;
+			  display: -ms-flex;
+			  display: -o-flex;
+			  display: flex;
+			  flex-flow: column wrap;
+			  justify-content: center;
+			  overflow: hidden;
+			  padding: 6rem 0;
+			  position: relative;
+			  width: 100%; }
+			  .main:after {
+			    background-color: rgba(2, 0, 25, 0.39)/*rgba(46, 61, 109, 0.7)*/;
+			    content: "";
+			    height: 100%;
+			    left: 0;
+			    position: absolute;
+			    top: 0;
+			    width: 100%; }
+			  .main-sandwich {
+			    transition: all 0.5s ease;
+			   }
+			   	.absolute .main-sandwich:hover .main-sandwich-item,
+			   	.fixed.transparent .main-sandwich:hover .main-sandwich-item {
+			   		border-top-color: #406da7;
+			   	}
+			   	.fixed .main-sandwich:hover .main-sandwich-item {
+			   		border-top-color: #002b31
+			   	}
+			   
+			    .main-sandwich-wrap {
+			      	align-self: center;
+			  		cursor: pointer;
+			  	 	margin-left: 20px;
+			  	 	padding-top: 4px;}
+			    .main-sandwich-menu {
+			      color: #fff;
+			      display: none;
+			      position: relative;
+			      text-transform: uppercase; }
+			    .main-sandwich-item {
+			     
+			      display: block;
+			      height: 0;
+			      opacity: 0.8;
+			      padding: 0 0 5px;
+			      position: relative;
+			      transition: all 0.5s ease;
+			      width: 25px; }
+			      .main-sandwich-item_over {
+			        transform-origin: 0 -4px; }
+			      .main-sandwich-item_under {
+			        transform-origin: 0 6px; }
+			  
+			  .main-wrap {
+			    color: #fff;
+			    display: -webkit-flex;
+			    display: -moz-flex;
+			    display: -ms-flex;
+			    display: -o-flex;
+			    display: flex;
+			    flex: 3;
+			    /*margin: auto;*/
+			    flex-flow: column wrap;
+			    justify-content: center;
+			    max-width: 920px;
+			    padding: 9vh 20px;
+			    position: relative;
+			    text-align: left;
+			    z-index: 1; }
+			    .main-wrap-logo {
+			      /*display: inline-block;*/
+			      flex: 1;
+			      margin-right: 10px;
+			      transition: opacity .5s ease-in-out;
+			      /*width: 100%;*/ }
+			      .main-wrap-logo a {
+			      	display: inline-block;
+			      }
+			      .main-wrap-logo img {
+			        width: 32px; }
+			      .logo-text {
+			      	display: inline-block;
+			      	padding-left: 10px;
+			      }
+			    .main-wrap-social {
+			    	
+			    }
+			    .main-wrap-social a {
+			    	
+			    	padding: 0 5px;
+			    }
+			    .main-wrap-social a .fa {
+			    	font-size: 1.3rem;
+			    	transition: color .3s ease-in-out
+			    }
+			    .main-wrap-social a:hover .fa,
+			    .absolute .main-wrap-social a:hover .fa,
+			    .fixed.transparent .main-wrap-social a:hover .fa {
+			    	color: #406da7
+			    }
+			    .fixed .main-wrap-social a:hover .fa{
+			    	color: #002b31;
+			    }
+			    .main-wrap-text {
+			      display: inline-block; }
+			      .main-wrap-text-up {
+			      	display: block;
+			        font: 1.1rem "RobotoBold";
+			        text-transform: uppercase; }
+			      .main-wrap-text-down {
+			      	display: block;
+			        font-size: 0.7rem;
+			        letter-spacing: 2px;
+			        text-transform: uppercase; }
+			    .main-wrap-heading {
+			      color: #fff;
+			      font: 2.5rem 'Pacifico', cursive;
+			      letter-spacing: 1px;
+			      margin-bottom: 30px;
+			      margin-top: 50px;
+			      text-align: center; }
+			      .main-wrap-heading-span {
+			        color: #00a8a8; }
+			      .main-wrap-heading .letter {
+			        display: inline-block; }
+			    .main-wrap-par {
+			      color: #fff;
+			      font: 2rem "RobotoBold", sans-serif;
+			      font-family: "RobotoRegular";
+			      letter-spacing: 1px;
+			      line-height: 1.7rem;
+			      margin-top: 20px;
+			      text-align: center;
+			      width: 100%; }
+
+
+
+
+
+			    .main-wrap-buttons {
+			      align-items: flex-end;
+			      display: -webkit-flex;
+			      display: -moz-flex;
+			      display: -ms-flex;
+			      display: -o-flex;
+			      display: flex;
+			      flex-flow: row wrap;
+			      justify-content: center;
+			      margin-top: 2rem; }
+			    .main-wrap-button {
+			      color: #eee;
+			      font: 0.85rem "RobotoBold", sans-serif;
+			     
+			      border-radius: 3px;
+			      box-sizing: border-box;
+			      cursor: pointer;
+			      display: inline-block;
+			      margin: 1.5rem 1rem 0 0;
+			      outline: none;
+			      padding: 15px 30px;
+			      text-transform: uppercase;
+			      transition: all 0.25s;
+			      width: 190px; }
+			      .main-wrap-button:hover {
+			        background-color: #00a5a8; }
+			      .main-wrap-button_gray {
+			        background-color: rgba(255, 255, 255, 0.2);
+			        background-image: none; }
+			        .main-wrap-button_gray:hover {
+			          background-color: rgba(255, 255, 255, 0.8);
+			          color: #05051c; }
+			  .main-menu {
+			  	flex: 2;
+			  }
+			  .main-menu-nav-list {
+			  	display: -webkit-flex;
+		        display: -moz-flex;
+		        display: -ms-flex;
+		        display: -o-flex;
+		        display: flex;
+		        justify-content: center;
+			  }
+			  .main-arrow {
+			    bottom: 2rem;
+			    color: rgba(255, 255, 255, 0.7);
+			    cursor: pointer;
+			    display: none;
+			    font: 1rem "RobotoBold";
+			    left: 50%;
+			    position: absolute;
+			    text-align: center;
+			    transform: translateX(-50%);
+			    transition: all 0.35s;
+			    z-index: 1; }
+			    .main-arrow .fa {
+			      animation: moveArrow 1.5s infinite ease-in-out;}
+			    .main-arrow:hover {
+			      color: white; }
+			    .main-arrow:hover .fa {
+			      animation-play-state: paused;
+			     }
+		@media all and (max-width: 480px) {
+			.main-wrap-logo {
+				display: none;
+			}
+		}
+		@media all and (min-width: 600px) {
+		  .main-sandwich-menu {
+		    display: inline-block; }}
+		@media all and (max-width: 767px) {
+			.main {
+				justify-content: flex-start;
+			}
+			 .main-menu {
+			    background-color: rgba(0, 0, 0, 0.8);
+			    display: none;
+			    height: 100vh;
+			    margin: auto;
+			    position: fixed;
+			    top: 0;
+			    width: 100%;
+			    z-index: 11; }
+			    .main-menu-nav {
+			      height: 100vh;
+			      margin: auto;
+			      text-align: center;
+			      width: 100%; }
+			      .main-menu-nav-list {
+			       
+			        flex-flow: column wrap;
+			        height: 100%;
+			        }
+			        .main-menu-nav-list-item {
+			          margin: 10px 0;
+			          padding: 15px 0;
+			          transition: all 0.5s ease; }
+			          .main-menu-nav-list-item-link {
+			            border-bottom: 2px solid transparent;
+			            color: #ccc;
+			            font-size: 2.5rem;
+			            position: relative;
+			            text-transform: uppercase;
+			            transition: all 0.5s ease; }
+			            .main-menu-nav-list-item-link:after {
+			              border-bottom: 2px solid #fff;
+			              content: "";
+			              height: 0;
+			              left: 0;
+			              position: absolute;
+			              top: 100%;
+			              transition: all 0.2s;
+			              width: 0; }
+			            .main-menu-nav-list-item-link:hover:after {
+			              width: 100%; }
+			            
+		}
+		
+			@media all and (min-width: 768px) {
+				.main {
+				    height: 100vh;
+				    padding-bottom: 0; }
+				    .main-wrap-heading {
+				      font-size: 3.5rem;
+				      margin-top: 1rem; }
+						.main-sandwich-wrap {
+				    	display: none
+				    }
+		
+		    .main-menu {
+			     
+			      /*margin-top: 5rem;*/
+			      position: relative;
+			      z-index: 1;
+			    }
+			    .main-menu-nav-list {
+		    	  flex-flow: row wrap;
+			    }
+			      .main-menu-nav-list-item {
+			      	background-color: #fff;
+			      	border: 1px solid #fff;
+			      	border-radius: 5px;
+			      	-webkit-box-sizing: border-box;
+			      	-moz-box-sizing: border-box;
+			      	box-sizing: border-box;
+			      	margin: 0 1rem;
+			      	opacity: .7;
+			      	
+			      	text-align: center;
+			      	transition: all .3s ease-in-out;
+			      	
+			      }
+			      .main-menu-nav-list-item:hover {
+			      	background-color: #406da7;
+			      	border: 1px solid #406da7;
+			      	opacity: 1;
+			      }
+			     
+			      	.main-menu-nav-list-item:hover .main-menu-nav-list-item-link {
+			      		color: #fff;
+			      	}
+			      	.main-menu-nav-list-item-link {
+			      		-webkit-box-sizing: border-box;
+			      		-moz-box-sizing: border-box;
+			      		box-sizing: border-box;
+			      		color: #000;
+			      		display: inline-block;
+			      		font: 1rem/2 'Pacifico', cursive;
+			      		padding: 0 3rem;
+			      		text-transform: capitalize;
+			      		transition: all .3s ease-in-out;
+			      		width: 100%;
+			}
+		  }
+		  @media all and (min-width: 992px) {
+		  	 .main-menu-nav-list-item {
+		  	 	margin: 0 2rem;
+		  	 }
+
+		  }
+
+		  @media all and (max-width: 1280px) {
+			body:after {
+			  background-attachment: fixed;
+			  height: 100vh;
+			  position: absolute;
+			}
+		  }
+		@font-face {
+		  font-family: "RobotoBold";
+		  font-style: normal;
+		  font-weight: normal;
+		  src: url("fonts/Roboto/roboto-bold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Roboto/roboto-bold-webfont.woff") format("woff"), url("fonts/Roboto/roboto-bold-webfont.ttf") format("truetype"); }
+		@font-face {
+		  font-family: "RobotoLight";
+		  font-style: normal;
+		  font-weight: normal;
+		  src: url("fonts/Roboto/roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Roboto/roboto-light-webfont.woff") format("woff"), url("fonts/Roboto/roboto-light-webfont.ttf") format("truetype"); }
+	</style>
+</head>
+<body class="page">
+<div id="preloader"><div>LOA<img src="img/logo.svg" class="spinner">ING</div></div>
+	<header>
+		<div class="main-wrap-logo">
+			<a href="index.html">
+				<img src="img/logo_white.svg" id="logo" data-wow-delay=".5s" data-wow-duration=".8s" alt="D">
+				<span class="logo-text">
+					<span class="main-wrap-text-up">Den Telezhnikov</span>
+					<span class="main-wrap-text-down">Front-end developer</span>
+				</span>
+			</a>
+		</div>
+		<ul class="fixed-menu">
+			<li><a href="#about">about</a></li>
+			<li><a href="#skills">skills</a></li>
+			<li><a href="#work">works</a></li>
+			<li><a href="#contacts">contacts</a></li>
+		</ul>
+		<div class="main-wrap-social">
+			<a href="https://github.com/totonaq"><i class="fa fa-github" aria-hidden="true"></i></a>
+
+			<a href="https://www.linkedin.com/in/%D1%82%D0%B5%D0%BB%D0%B5%D0%B6%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2-%D0%B4%D0%B5%D0%BD%D0%B8%D1%81-94968891/"><i class="fa fa-linkedin-square" aria-hidden="true" data-wow-delay="0.4s"></i></a>
+			
+			<a href="https://twitter.com/danny_tz"><i class="fa fa-twitter" aria-hidden="true" data-wow-delay="0.4s"></i></a>
+
+			<a href="https://vk.com/kymman"><i class="fa fa-vk" aria-hidden="true" data-wow-delay="0.4s"></i></a>
+
+		</div>
+		<div class="main-sandwich-wrap">
+			
+			<!--<span class="main-sandwich-menu">Меню</span>-->
+			<div class="main-sandwich">
+				<span class="main-sandwich-item main-sandwich-item_over"></span>
+				<span class="main-sandwich-item main-sandwich-item_middle"></span>
+				<span class="main-sandwich-item main-sandwich-item_under"></span>
+			</div>
+				
+		</div>
+	</header>
+	<section class="main">
+		
+		<div class="main-wrap">
+			
+			<div class="main-wrap-content">
+			
+				<h1 class="main-wrap-heading">Front-end Web Developer
+				</h1>
+			</div>
+			
+			
+		</div>
+		<div class="main-menu">
+			<nav class="main-menu-nav">
+				<ul class="main-menu-nav-list">
+					<li class="main-menu-nav-list-item"><a href="#about" class="main-menu-nav-list-item-link">about</a></li>
+					<li class="main-menu-nav-list-item"><a href="#skills" class="main-menu-nav-list-item-link">skills</a></li>
+					<li class="main-menu-nav-list-item"><a href="#work" class="main-menu-nav-list-item-link">works</a></li>
+					<li class="main-menu-nav-list-item"><a href="#contacts" class="main-menu-nav-list-item-link">contacts</a></li>
+				</ul>
+			</nav>
+		</div>
+		
+	</section>
+	
+	<section class="about" id="about">
+		<div class="about-photo">
+			<div class="about-photo-top">
+			<!--<img src="img/dennis.jpg" alt="" class="about-photo-img">-->
+			<h1 class="about-menu-item">About me</h1>
+			</div>
+
+		</div>
+		<div class="about-wrap">
+			
+			<p class="about-text">
+				Меня зовут Денис и я более года занимаюсь фронтенд- (и чуть-чуть бэкенд-) разработкой. Где я этому научился? В моем электротехническом ВУЗе, к сожалению, информационным технологиям не обучали, поэтому осваивать все пришлось самостоятельно, смотря видео-подкасты более старших  <a href="https://ihatetomatoes.net/simple-greensock-tutorial-your-first-steps-with-gsap/" class="about-text-link">товарищей</a>, читая <a href="https://www.gitbook.com/book/karmazzin/eloquentjavascript_ru/details" class="about-text-link">умные книжки</a> и <a href="https://reactjs.org/" class="about-text-link">туториалы</a>  <!--(«Выразительный JavaScript», М. Хавербеке; «JavaScript. Подробное руководство», Д. Флэнаган; «You Don't Know JS», K.Simpson)--> и проходя <a href="https://www.codecademy.com/" class="about-text-link">онлайн-курсы</a> по самым разным технологиям, причем не всегда на родном языке. В результате я научился делать адаптивные, анимированные сайты разной степени сложности, и я продолжаю совершенствовать свои навыки, изучая новые технологии и разрабатывая собственные проекты, с которыми вы можете ознакомиться <a href="#projects" class="about-text-link">ниже</a>.
+			
+			</p>
+		</div>
+	</section>
+	<section class="skills" id="skills">
+		<div class="skills-box">
+			<div class="skills-box-item-wrap">
+				<div class="skills-box-item">
+					<img src="img/webpage.svg" class="wow fadeIn" alt="development" data-wow-duration="1s">
+				</div>
+				<div class="skills-box-item-content">
+					<h1>разработка</h1>
+					<div class="skills-box-line dev"></div>
+					<p class="skills-box-descr">Я не дизайнер. Я тот, кто с помощью html, css, javascript и php-кода превращает дизайн в полноценную веб-страницу.</p>
+				</div>
+				
+				<!--<div class="skills-box-line dev"></div>-->
+			</div>
+			<div class="skills-box-item-wrap">
+				<div class="skills-box-item">
+					<img src="img/video-camera.svg" class="wow fadeIn" alt="animation" data-wow-delay=".1s" data-wow-duration="1s">
+				</div>
+				<div class="skills-box-item-content">
+					<h1>анимация</h1>
+					<div class="skills-box-line anim"></div>
+					<p class="skills-box-descr">Умеренная анимация украшает. Для создания этого украшения я использую css3, canvas и чудесную библиотеку gsap.</p>
+					<!--<div class="skills-box-line anim"></div>-->
+				</div>
+			</div>
+			<div class="skills-box-item-wrap">
+				<div class="skills-box-item">
+					<img src="img/puzzle-piece.svg" class="wow fadeIn" alt="applications" data-wow-delay=".2s" data-wow-duration="1s">
+				</div>
+				<div class="skills-box-item-content">
+					<h1>приложения</h1>
+					<div class="skills-box-line plugin"></div>
+					<p class="skills-box-descr">Написание плагинов и приложений на js, jQuery и react в настоящее время является приоритетом в моей работе.</p>
+					<!--<div class="skills-box-line plugin"></div>-->
+				</div>
+			</div>
+			<div class="skills-box-item-wrap">
+				<div class="skills-box-item">
+					<img src="img/wordpress.svg" class="wow fadeIn" alt="cms" data-wow-delay=".3s" data-wow-duration="1s">
+				</div>
+				<div class="skills-box-item-content">
+					<h1>cms</h1>
+					<div class="skills-box-line cms"></div>
+					<p class="skills-box-descr">Я не просто настраваю стандартные шаблоны WordPress, а интегрирую оригинальные.</p>
+					<!--<div class="skills-box-line cms"></div>-->
+				</div>
+			</div>
+			
+		</div>
+
+		</div>
+			
+			<div class="skills-info-wrap">
+				<div class="skills-info-progress">
+
+					<div class="skills-info-progress-item-wrap">
+						
+						<canvas id="html" width="200" height="50"></canvas>
+						<p class="skills-info-progress-item-text">HTML</p>
+					</div>
+					
+					<div class="skills-info-progress-item-wrap">
+						
+						<canvas id="css" width="200" height="50"></canvas>
+						<p class="skills-info-progress-item-text">CSS<p class="skills-info-progress-item-text_normal">
+					</div>
+
+					<div class="skills-info-progress-item-wrap">
+						
+						<canvas id="js" width="200" height="50"></canvas>
+						<p class="skills-info-progress-item-text">JavaScript<p class="skills-info-progress-item-text_normal">
+					</div>
+					
+					<div class="skills-info-progress-item-wrap">
+						
+						<canvas id="wp" width="200" height="50"></canvas>
+						<p class="skills-info-progress-item-text">Wordpress</p>
+					</div>
+					
+				</div>
+			</div>
+	
+	</section>
+
+	
+	<section class="work" id="work">
+		
+		<h1 class="work-menu-item wow fadeInTxt">Works</h1>
+	
+		<div class="work-content-wrap">
+			<div class="work-content-block" id="first_block">
+				<div class="work-content-block-descr wow toRight">
+					<div class="work-content-block-descr-wrap">
+						<h2 class="work-content-block-descr-heading">
+						<code>Texcort</code>
+						</h2>
+						
+						<p class="work-content-block-descr-par">
+							Анимированный лендинг с полноэкранными слайдами для международной китайской компании, занимающейся продажей швейных нитей (г. Гуанчжоу)
+						</p>
+					</div>
+					
+					<div class="work-content-block-descr-tech-wrap">
+						<p class="work-content-block-descr-tech"><code>Technologies</code></p>
+						<ul class="work-content-block-descr-list">
+							<li class="work-content-block-descr-list-item">
+								HTML
+							</li>
+							<li class="work-content-block-descr-list-item">
+								SASS
+							</li>
+							<li class="work-content-block-descr-list-item">
+								jQuery
+							</li>
+							<li class="work-content-block-descr-list-item">
+								Icon font
+							</li>
+							<li class="work-content-block-descr-list-item">
+								Ajax
+							</li>
+							<li class="work-content-block-descr-list-item">
+								Animate.css
+							</li>
+							
+							<li class="work-content-block-descr-list-item">
+								PHP
+							</li>
+							<li class="work-content-block-descr-list-item">
+								Full responsive
+							</li>
+						</ul>
+					</div>
+					
+				</div>
+				<div class="work-content-block-img wow toLeft">
+					<img src="img/projects/texcort1.png" alt="texcort" class="work-content-block-img-example">
+					<a href="http://texcort.xyz" class="work-content-block-descr-btn">Посетить сайт</a>
+				</div>
+				<div class="work-content-block-testimonial">
+					<p class="work-content-block-testimonial-cite wow toDown">"С Денисом, работаю постоянно. В плане сроков и исполнения все на высоком уровне, код чистый и где нужно комментарии. Задачи разной сложности всегда выполняются раньше поставленных дедлайнов. Работой доволен, продолжаем сотрудничать!"</p>
+					<div class="work-content-block-testimonial-wrap">
+						<div class="work-content-block-testimonial-photo-wrap wow flipInY">
+							<img src="img/edik.jpg" alt="ed" class="work-content-block-testimonial-photo">
+						</div>
+						<span class="work-content-block-testimonial-descr wow toLeft">Эдуард Уайанай, веб-дизайнер, фрилансер</span>
+					</div>
+				</div>
+			</div>
+			<div class="work-content-block">
+				<div class="work-content-block-descr wow toLeft">
+					<div class="work-content-block-descr-wrap">
+						<h2 class="work-content-block-descr-heading">
+							<code>Gold-service</code>
+						</h2>
+					
+						<p class="work-content-block-descr-par">
+							Сайт-каталог белгородской компании по ремонту компьютеров и мобильных устройств содержит свыше 100 страниц-наименований.
+						</p>
+					</div>
+					<div class="work-content-block-descr-tech-wrap">
+						<p class="work-content-block-descr-tech"><code>Technologies</code></p>
+						<ul class="work-content-block-descr-list">
+							<li class="work-content-block-descr-list-item">
+								HTML
+							</li>
+							<li class="work-content-block-descr-list-item">
+								SASS
+							</li>
+							<li class="work-content-block-descr-list-item">
+								jQuery
+							</li>
+							<li class="work-content-block-descr-list-item">
+								Ajax
+							</li>
+							<li class="work-content-block-descr-list-item">
+								PHP
+							</li>
+							<li class="work-content-block-descr-list-item">
+								WordPress
+							</li>
+							<li class="work-content-block-descr-list-item">
+								Google maps API
+							</li>
+							<li class="work-content-block-descr-list-item">
+								Full responsive
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="work-content-block-img wow toRight">
+					<img src="img/projects/gold-service.png" alt="gold-service" class="work-content-block-img-example">
+					<a href="http://gold-service.com.ru" class="work-content-block-descr-btn">Посетить сайт</a>
+				</div>
+				<div class="work-content-block-testimonial">
+					<p class="work-content-block-testimonial-cite wow toDown">"Денис - очень ответственный и порядочный человек, надежный партнер. Задача выполнена оперативно и качественно. Также в ходе работы были внесены некоторые корректировки, которые Денис реализовал на свой вкус. В результате получилось то, что мы хотели. Готов ответить на интересующие вопросы, в то же время быстро и без лишних вопросов разбирается в сути задания. Настоятельно рекомендую к сотрудничеству."</p>
+					<div class="work-content-block-testimonial-wrap">
+						<div class="work-content-block-testimonial-photo-wrap wow flipInY">
+							<img src="img/sergey.jpg" alt="serge" class="work-content-block-testimonial-photo">
+						</div>
+						<span class="work-content-block-testimonial-descr wow toLeft">Бусарев Сергей, менеджер проектов</span>
+					</div>
+				</div>
+			</div>
+			<div class="work-content-block">
+				<div class="work-content-block-descr wow toRight">
+					<div class="work-content-block-descr-wrap">
+						<h2 class="work-content-block-descr-heading">
+						<code>Zenlumex</code>
+						</h2>
+						
+						<p class="work-content-block-descr-par">
+							Альтернативный дизайн сайта китайской компании по продаже светодиодных и других осветитльных приборов. 
+						</p>
+					</div>
+					
+					<div class="work-content-block-descr-tech-wrap">
+						<p class="work-content-block-descr-tech"><code>Technologies</code></p>
+						<ul class="work-content-block-descr-list">
+							<li class="work-content-block-descr-list-item">
+								HTML
+							</li>
+							<li class="work-content-block-descr-list-item">
+								CSS
+							</li>
+							<li class="work-content-block-descr-list-item">
+								jQuery
+							</li>
+							
+							<li class="work-content-block-descr-list-item">
+								Ajax
+							</li>
+							<li class="work-content-block-descr-list-item">
+								Animate.css
+							</li>
+							<li class="work-content-block-descr-list-item">
+								Icon font
+							</li>
+							<li class="work-content-block-descr-list-item">
+								PHP
+							</li>
+							<li class="work-content-block-descr-list-item">
+								Full responsive
+							</li>
+						</ul>
+					</div>
+					
+				</div>
+				<div class="work-content-block-img wow toLeft">
+					<img src="img/projects/zenlumex.png" alt="zenlumex" class="work-content-block-img-example">
+					<a href="http://itsmywork.xyz" class="work-content-block-descr-btn">Посетить сайт</a>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+
+	<section class="projects" id="projects">
+		<h1 class="work-menu-item wow fadeInTxt">Personal projects</h1>
+		<div class="projects-content-wrap">
+			<div class="projects-items-wrap">
+				<div class="projects-item wow zoomIn" data-wow-duration="1s">
+					<div class="projects-item-wrap">
+						<div class="projects-item-img"></div>
+						<a href="https://totonaq.github.io/Tire-Size-Calculator/" class="projects-item-link">
+							
+							Tire<span>Size</span>
+						</a>
+						
+					</div>
+					
+					<p class="projects-item-descr">
+						Шинный калькулятор онлайн и его <a href="http://100size.com/vizualnyj-shinnyj-kalkulyator-onlajn">реализация</a> в онлайн-магазине по продаже шин и дисков (vanilla js).
+					</p>
+				</div>
+				<div class="projects-item wow zoomIn" data-wow-duration="1s" data-wow-delay=".1s">
+					<div class="projects-item-wrap">
+						<div class="projects-item-img"></div>
+						<a href="https://totonaq.github.io/Gallery-Plugin/" class="projects-item-link">
+							gallery.js
+						</a>
+						
+					</div>
+					<p class="projects-item-descr">
+						Этот jQuery-плагин представляет собой
+						простую адаптивную галерею с небольшим количеством настроек. 
+					</p>
+				</div>
+				<div class="projects-item wow zoomIn" data-wow-duration="1s" data-wow-delay=".2s">
+					<div class="projects-item-wrap">
+						<div class="projects-item-img">
+							<div id="clock"></div>
+						</div>
+						
+						<a href="https://totonaq.github.io/Canvas-Clock/" class="projects-item-link">
+							clock.js
+						</a>
+						
+					</div>
+					<p class="projects-item-descr">
+						Аналоговые часы с поддержкой часовых поясов и зимнего времени. Выполнены в стиле плагина на чистом js.
+					</p>
+				</div>
+				<div class="projects-item wow zoomIn" data-wow-duration="1s" data-wow-delay=".3s">
+					<div class="projects-item-wrap">
+						<div class="projects-item-img"></div>
+						<a href="https://iamdennis.xyz" class="projects-item-link">
+							portfolio
+						</a>
+						
+					</div>
+					<p class="projects-item-descr">
+						Предыдущая версия моего сайта-портфолио, выполненная на Wordpress. 
+					</p>
+				</div>
+				<div class="projects-item wow zoomIn" data-wow-duration="1s" data-wow-delay=".3s">
+					<div class="projects-item-wrap">
+						<div class="projects-item-img"></div>
+						<a href="https://totonaq.github.io/countdown/" class="projects-item-link">
+							countdown timer
+						</a>
+						
+					</div>
+					<p class="projects-item-descr">
+						Таймер обратного отсчета на react.js
+					</p>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+
+	<section class="contacts" id="contacts">
+		
+		<div class="contacts-text">
+			<h1 class="contacts-text-heading">Хотите сотрудничать?</h1>
+			<p class="contacts-text-par">
+				Прежде всего я заинтересован в долгосрочном сотрудничестве с it-компаниями. Вот <a href="resume.pdf" target="_blank" class="about-text-link">здесь</a> мое резюме.
+			</p>
+		</div>
+		<div class="contacts-wrap" id="contacts-wrap">
+			
+			<form class="contacts-form">
+				<input type="text" name="name" class="contacts-form-input wow toDown" placeholder="Имя *">
+				<input type="text" name="email" class="contacts-form-input wow toDown" placeholder="Email *" data-wow-delay="0.2s">
+				<input type="tel" name="phone" class="contacts-form-input wow toDown" placeholder="Телефон" data-wow-delay="0.4s">
+				<textarea name="text" id="" cols="30" rows="6" class="contacts-form-text wow toLeft" placeholder="Сообщение *"></textarea>
+				<button type="submit" class="contacts-form-submit wow fadeIn" data-wow-delay="0.6s" data-wow-duration=".6s">Отправить</button>
+				<span class="contacts-form-status"></span>
+			</form>
+		</div>
+	</section>
+	<footer>
+		<span class="footer-copy"></span>
+		<a href="resume.pdf" target="_blank" class="footer-resume">Смотреть резюме</a>
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script
+  src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+  crossorigin="anonymous"></script>
+	<script src="libs/jquery.malihu.PageScroll2id.min.js"></script>
+	<script src="libs/wow.min.js"></script>
+	<script src="libs/clock.min.js"></script>
+    <script src="https://use.fontawesome.com/140b30ef96.js"></script>
+   
+	<script src="js/common.js"></script>
+	<script>
+		$(window).on('load', function() {
+			var $preloader = $('#preloader');
+			var $spinner = $preloader.find('div');
+			$spinner.fadeOut();
+			$preloader.delay(350).fadeOut('slow');
+
+		});
+		let currentYear = new Date().getFullYear();
+		document.querySelector('.footer-copy').textContent = 'IAMDEN © ' +
+		currentYear;
+	</script>
+</body>
+</html>
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Pacifico|Sedgwick+Ave" rel="stylesheet">
+<link rel="stylesheet" href="libs/animate.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/green.css">
+<link rel="stylesheet" href="css/font.css">
+<link rel="stylesheet" href="css/media.css">

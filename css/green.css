@@ -1,0 +1,86 @@
+input::-webkit-input-placeholder {
+  color: #fff; }
+
+input:-moz-placeholder {
+  color: #fff; }
+
+input::-moz-placeholder {
+  color: #fff; }
+
+input:-ms-input-placeholder {
+  color: #fff; }
+
+textarea::-webkit-input-placeholder {
+  color: #fff; }
+
+textarea:-moz-placeholder {
+  color: #fff; }
+
+textarea::-moz-placeholder {
+  color: #fff; }
+
+textarea:-ms-input-placeholder {
+  color: #fff; }
+
+.main-sandwich-item {
+  border-top: 2px solid #fff; }
+
+.main-sandwich:hover .main-sandwich-item {
+  border-top-color: #578f8f; }
+
+.main-wrap-button {
+  background-color: rgba(6, 187, 194, 0.5); }
+  .main-wrap-button:hover {
+    background-color: #406da7; }
+  .main-wrap-button-gray {
+    background-color: rgba(255, 255, 255, 0.2); }
+    .main-wrap-button-gray:hover {
+      background-color: rgba(255, 255, 255, 0.8); }
+
+.main-arrow .fa {
+  color: #406da7; }
+
+.skills-blocks-item .fa {
+  color: #406da7; }
+
+.work-menu-item-sub a {
+  color: #406da7; }
+  .work-menu-item-sub a:hover {
+    color: #7dcdcd; }
+
+.work-content-block-descr .fa {
+  color: #406da7; }
+
+.work-content-block-descr-btn {
+  border: 2px solid #3f93a6;
+  opacity: 0.8; }
+  .work-content-block-descr-btn:hover {
+    border-color: #fff;
+    background-color: #fff;
+    color: #111; }
+
+.contacts-around-bottom {
+  background-color: #e0efef; }
+
+
+  .contacts-form-input:focus {
+    box-shadow: 0 0 10px #fff; }
+
+
+  .contacts-form-text:focus {
+    box-shadow: 0 0 10px #fff; }
+
+.contacts-form-submit {
+  color: #fff; }
+  .contacts-form-submit:hover {
+    background-color: #fff;
+    border: 2px solid #fff;
+    color: #252a30; }
+
+.contacts-soc .fa {
+  color: #406da7; }
+
+svg path {
+  fill: #01bbc2; }
+
+/*# sourceMappingURL=green.css.map */

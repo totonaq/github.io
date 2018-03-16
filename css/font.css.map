@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAUE,UAYC;EAXC,WAAW,ECVJ,YAAY;EDWnB,UAAU,EARJ,MAAM;EASZ,WAAW,ECZiD,MAAM;EDclE,GAAG,EEqBO,oNAAiD;AF1B7D,UAYC;EAXC,WAAW,ECTJ,aAAa;EDUpB,UAAU,EARJ,MAAM;EASZ,WAAW,ECXmD,MAAM;EDapE,GAAG,EEqBO,uNAAiD;AF1B7D,UAYC;EAXC,WAAW,ECRJ,eAAe;EDStB,UAAU,EARJ,MAAM;EASZ,WAAW,ECVuD,MAAM;EDYxE,GAAG,EEqBO,6NAAiD;AF1B7D,UAYC;EAXC,WAAW,ECPJ,KAAK;EDQZ,UAAU,EARJ,MAAM;EASZ,WAAW,ECT2B,MAAM;EDW5C,GAAG,EEqBO,uKAAiD",
-"sources": ["../sass/bourbon/css3/_font-face.scss","../sass/font.sass","../sass/bourbon/helpers/_font-source-declaration.scss"],
-"names": [],
-"file": "font.css"
-}

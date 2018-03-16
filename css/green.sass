@@ -1,0 +1,95 @@
+$mainColor: #406da7//hsl(180,100%,33%)
+$mainColorHover: #578f8f
+$sandwichHover: #578f8f
+$bgInput: rgba(6, 187, 194, .15)
+$mainWrapBtn: rgba(6, 187, 194, 0.5)
+$contactImgLine: rgba(224, 239, 239, 1)
+$grayBtn: rgba(255, 255, 255, 0.2)
+$svgLogo: #01bbc2
+$workLink: #7dcdcd
+input::-webkit-input-placeholder
+	color: #fff//$mainColor
+
+input:-moz-placeholder
+	color: #fff//$mainColor
+
+input::-moz-placeholder
+	color: #fff//$mainColor
+
+input:-ms-input-placeholder
+	color: #fff//$mainColor
+
+textarea::-webkit-input-placeholder
+	color: #fff//$mainColor
+
+textarea:-moz-placeholder
+	color: #fff//$mainColor
+
+textarea::-moz-placeholder
+	color: #fff//$mainColor
+
+textarea:-ms-input-placeholder
+	color: #fff//$mainColor
+
+.main-sandwich-item
+	border-top: 2px solid #fff//$mainColor
+.main-sandwich:hover .main-sandwich-item
+	border-top-color: $sandwichHover
+
+.main-wrap-button
+	background-color: $mainWrapBtn
+	&:hover
+		background-color: $mainColor
+	&-gray
+		background-color: $grayBtn
+		&:hover
+			background-color: rgba(255, 255, 255, 0.8)
+
+.main-arrow .fa
+	color: $mainColor
+.skills-blocks-item .fa
+	color: $mainColor
+.work-menu-item-sub a
+	color: $mainColor
+	&:hover
+		color: $workLink
+
+.work-content-block-descr .fa
+	color: $mainColor
+	
+.work-content-block-descr-btn
+	border: 2px solid hsl(191, 45%, 45%)//$mainColor
+	//background-color: hsl(214, 45%, 45%)
+	//background-image: -webkit-linear-gradient(bottom left, hsl(0, 51%, 46%), hsl(0, 5%, 29%))
+	//background-image: -o-linear-gradient(bottom left, hsl(0, 51%, 46%), hsl(0, 5%, 29%))
+	//background-image: linear-gradient(to top right, hsl(0, 51%, 46%), hsl(0, 5%, 29%))
+	opacity: .8
+	&:hover
+		border-color: #fff
+		background-color: #fff//$mainColorHover
+		color: #111
+		//opacity: 1
+
+.contacts-around-bottom
+	background-color: $contactImgLine
+
+.contacts-form-input
+	
+	&:focus
+		box-shadow: 0 0 10px #fff
+.contacts-form-text
+	
+	&:focus
+		box-shadow: 0 0 10px #fff
+.contacts-form-submit
+	//border: 2px solid $mainColor
+	color:  #fff//#252a30 //$mainColor
+	&:hover
+		background-color: #fff//#5d5d5d//$mainColor
+		border: 2px solid #fff//#5d5d5d
+		color: #252a30
+.contacts-soc .fa
+	color: $mainColor
+
+svg path
+	fill: $svgLogo 

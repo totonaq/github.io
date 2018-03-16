@@ -1,9 +1,3 @@
-html, body, h1, h2, h3, p, ul, li
-	margin: 0
-	padding: 0
-body
-	font: 16px "RobotoLight", sans-serif
-	overflow-x: hidden
 section
 	box-sizing: border-box
 	overflow-x: hidden
@@ -12,10 +6,6 @@ ul
 a
 	color: #fff
 	text-decoration: none
-	&:focus
-		outline: none
-button
-	border: none
 	&:focus
 		outline: none
 input, textarea
@@ -28,12 +18,12 @@ input, textarea
 .blur
 	filter: blur(2px)
 
-$mainHeading: "RobotoBold"
-$subheading: "RobotoRegular"
-$mainHeadingsColor: #05051c// #114//#586468//#000//#63707e// #292929//#93a4aa//
-$subHeadingsColor: #63707e// #777
-$parColor: #7a898e//#93a4aa
-$mainColor: hsl(180,100%,33%)//#06BBC2//#06BC9B//#268D92//#268EA4 // #8ad2d2//
+$mainHeading: 'Pacifico', cursive
+$subheading: 'Fira Sans', sans-serif
+$mainHeadingsColor: #406da7//#05051c
+$subHeadingsColor: #63707e
+$parColor: #7a898e
+$mainColor: #406da7//hsl(180,100%,33%)
 $mainColorHalf: rgba(6, 187, 194, .5)
 $mainColorHover: #578f8f
 $mainColor2: #1ba49c
@@ -45,45 +35,53 @@ $dWidth: 200px
 $dHeight: $dWidth / 2
 $backDeg: 162deg
 $desDeg: 180deg
-input::-webkit-input-placeholder
-	color: $mainColor
 
-input:-moz-placeholder
-	color: $mainColor
+$color1: #2c305a
+$color2: #2d828e
+$color3: #928b60
+$color4: #c14646
 
-input::-moz-placeholder
-	color: $mainColor
-
-input:-ms-input-placeholder
-	color: $mainColor
-
-textarea::-webkit-input-placeholder
-	color: $mainColor
-
-textarea:-moz-placeholder
-	color: $mainColor
-
-textarea::-moz-placeholder
-	color: $mainColor
-
-textarea:-ms-input-placeholder
-	color: $mainColor
+$discDiam: 150px
+$discTop: $discDiam / 2
+$padding: 15px
+$paddingDiam: $discDiam + 2 * $padding
+$mapHeight: 60vh
 
 .red-point
 	color: #f04
+header.fixed
+	background-color: rgba(47,130,142,.9)//#31828f
+header.fixed.transparent
+	background-color: transparent
+header.absolute
+	background-color: transparent
+.fixed
+	position: fixed
+	.main-wrap-logo
+		display: none
+	.fixed-menu
+		visibility: visible
+.absolute
+	position: absolute
+	.fixed-menu
+		visibility: hidden
+
+
+
 @mixin mainTextStyle($color, $font-size)
 	color: $color
 	font: $font-size $mainHeading, sans-serif
 %btnBdRad
-	border-radius: 10px
-@mixin inputParam($bgColor, $width, $mTop: 25px)
+	border-radius: 5px
+@mixin inputParam($width, $mTop: 25px)
 	@extend %btnBdRad
-	background-color: $bgColor
+	background-color: transparent
+	border: 2px solid #fff//#fffc9c//#89835a//
 	box-sizing: border-box
-	color: #444
+	color: #fff
 	font: .85rem 'RobotoRegular'
 	margin-top: $mTop
-	padding: 15px 20px
+	padding: 10px 20px
 	width: $width
 
 @mixin chart($bgColor, $rotateZ, $z)
@@ -123,11 +121,12 @@ textarea:-ms-input-placeholder
 	text-align: right
 	text-transform: uppercase
 %menuItem
-	color: #05051c//$mainColor //$mainHeadingsColor// 
-	font: 2rem $mainHeading
-	opacity: 0
+	color: $mainColor //$mainHeadingsColor// 
+	font: 3rem $mainHeading
+	//opacity: 0
 	padding-bottom: 15px
 	text-align: center
+	
 %subHead
 	color: $subHeadingsColor
 	font-size: 1.3rem
@@ -135,220 +134,6 @@ textarea:-ms-input-placeholder
 	text-align: center
 	transform: scaleY(.9)
 
-.main
-	background: fixed url(../img/main_bg.jpg) center center/ cover no-repeat
-	overflow: hidden
-	padding-bottom: 4rem
-	position: relative
-	width: 100%
-	&:after
-		background-color: rgba(22,22,22,0.8)//rgba(0,0,0,0.7)//
-		content: ''
-		height: 100%
-		left: 0
-		position: absolute
-		top: 0
-		width: 100%
-	&-sandwich
-		border-radius: 5%
-		display: inline-block
-		margin-left: 20px
-		position: relative
-		transition: all .5s ease
-		vertical-align: middle
-		z-index: 10
-		&:hover .main-sandwich-item
-			border-top-color: $mainColorHover
-		&-wrap
-			position: fixed
-			right: 0
-			text-align: right
-			width: 300px
-			z-index: 12
-			&-btn
-				box-sizing: border-box
-				cursor: pointer
-				display: inline-block
-				margin: 45px 30px
-				transition: all .5s ease
-				.main-sandwich-menu
-					&:after
-						border-bottom: 1px solid #fff
-						content: ""
-						height: 0
-						left: 0
-						position: absolute
-						top: 100%
-						transition: all .2s
-						width: 0
-				&:hover .main-sandwich-menu:after
-					width: 100%
-		&-menu
-			color: #fff
-			display: none
-			position: relative
-			text-transform: uppercase
-		&-item
-			border-top: 2px solid $mainColor
-			display: block
-			height: 0
-			//left: 100px
-			opacity: 0.8
-			padding: 0 0 5px
-			position: relative
-			transition: all .5s ease
-			width: 25px
-
-			&_over
-				transform-origin: 0 -4px
-			//&_middle
-				
-			&_under
-				transform-origin: 0 6px
-	&-wrap
-		color: #fff
-		margin: auto
-		max-width: 920px
-		padding: 5vh 20px
-		position: relative
-		text-align: left
-		z-index: 1
-		&-logo
-			display: inline-block
-			margin-right: 10px
-			width: 32px
-			img
-				width: 100%
-		&-text
-			display: inline-block
-			&-up
-				font: 1.1rem 'RobotoBold'
-				text-transform: uppercase
-			&-down
-				font-size: .7rem
-				letter-spacing: 2px
-				text-transform: uppercase
-		&-heading
-			@include mainTextStyle(#fff, 2.5rem)
-			letter-spacing: 1px
-			margin-bottom: 30px
-			margin-top: 50px
-			&-span
-				color: $mainColor
-			.letter
-				display: inline-block
-		&-par
-			@include mainTextStyle(#fff, 1rem)
-			font-family: $subheading
-			letter-spacing: 1px
-			line-height: 1.7rem
-			margin-top: 20px
-			width: 88%
-		&-buttons
-			align-items: flex-end
-			display: -webkit-flex
-			display: -moz-flex
-			display: -ms-flex
-			display: -o-flex
-			display: flex
-			flex-flow: row wrap
-			justify-content: center
-			margin-top: 2rem
-		&-button
-			@include mainTextStyle(#eee, .85rem)
-			@extend %btnBdRad
-			//background-image: linear-gradient(to right, $mainColor, $mainColor2)
-			background-color: rgba(6, 187, 194, .5)//#00a5a8//$mainColor
-			//border: 2px solid hsl(180,100%,37%)//$mainColorHover//transparent//#fff
-			border-radius: 3px
-			box-sizing: border-box
-			cursor: pointer
-			display: inline-block
-			margin: 1.5rem 1rem 0 0
-			outline: none
-			padding: 15px 30px
-			text-transform: uppercase
-			transition: all .25s
-			width: 190px
-			&:hover
-				background-color: #00a5a8//#0ecbce//$mainColor//$mainColorHover//rgba(6, 187, 194, .8)
-
-			&_gray
-				background-color: rgba(255,255,255,.2)
-				background-image: none
-				&:hover
-					background-color: rgba(255,255,255,.8)
-					color: #05051c
-	&-menu
-		background-color: rgba(0,0,0,.8)
-		display: none
-		height: 100vh
-		margin: auto
-		position: fixed
-		top: 0
-		width: 100%
-		z-index: 11
-		&-nav
-			height: 100vh
-			margin: auto
-			text-align: center
-			width: 100%
-			&-list
-				display: -webkit-flex
-				display: -moz-flex
-				display: -ms-flex
-				display: -o-flex
-				display: flex
-				flex-flow: column wrap
-				height: 100%
-				justify-content: center
-				&-item
-					margin: 10px 0
-					padding: 15px 0
-					transition: all .5s ease
-					//&:nth-child(2)
-						//animation-delay: .2s
-					//&:nth-child(3)
-						//animation-delay: .4s
-					&:hover
-						//background-color: rgba(87,0,0, .6)
-					&-link
-						border-bottom: 2px solid transparent
-						color: #ccc
-						font-size: 2.5rem
-						position: relative
-						text-transform: uppercase
-						transition: all .5s ease
-						&:after
-							border-bottom: 2px solid #fff
-							content: ""
-							height: 0
-							left: 0
-							position: absolute
-							top: 100%
-							transition: all .2s
-							width: 0
-						&:hover:after
-							width: 100%
-	&-arrow
-		bottom: 2rem
-		color: rgba(255,255,255,.7)
-		cursor: pointer
-		display: none
-		font: 1rem 'RobotoBold'
-		left: 50%
-		position: absolute
-		text-align: center
-		transform: translateX(-50%)
-		transition: all .35s
-		z-index: 1
-		.fa
-			animation: moveArrow 1.5s infinite ease-in-out
-			color: $mainColor
-		&:hover
-			color: rgba(255,255,255,1)
-		&:hover .fa
-			animation-play-state: paused
 @keyframes moveArrow
 	0%
 		transform: translateY(0)
@@ -369,14 +154,157 @@ textarea:-ms-input-placeholder
 	top: 15px
 	transform: rotateZ(180deg) skewX(-35deg)
 	width: 30px
+.intro
+	background-color: #f7f7f7//#ecf0f1
+	padding: 6rem 0
+	&-text
+		color: hsl(195, 8%, 52%)
+		font-size: 1.7rem
+		line-height: 1.7
+		margin: 0 auto 4rem
+		max-width: 900px
+		text-align: center
+		width: 95%
+.fixed-menu
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	flex: 1
+	flex-flow: row wrap
+	justify-content: flex-start
+	text-transform: uppercase
+	visibility: hidden
+	li
+		margin: 0 5px
+		position: relative
+		a
+			border-radius: 3px
+			color: #fff//#3f93a6
+			font: 1rem $subheading
+			letter-spacing: 4px
+			padding: 0 10px
+			transition: all .3s ease-in-out
+			//&:after
+				//border-bottom: 2px solid #406da7
+				//content: ''
+				//height: 100%
+				//left: 0
+				//position: absolute
+				//transition: width .2s ease-in-out
+				//top: 0
+				//width: 0
+			
+			//&:hover 
+				//&:after
+					//width: 100%
+			&:hover, &.active-item
+				background-color: #fff
+				color: #31828f
+
 .skills
 	background-color: $skillsBg
-	padding: 4rem 20px
+	//background-image: linear-gradient(0deg, #f00, #000)
+	overflow: visible
+	padding: 0 20px 2rem
 	position: relative
+	&:after
+		//background: url(../img/javascript-code.jpg) center/ cover no-repeat
+		content: ''
+		//filter: brightness(30%)
+		height: 100%
+		left: 0
+		position: absolute
+		top: 0
+		width: 100%
+		z-index: -1
 	&-menu-item
 		@extend %menuItem
+		//text-align: left
 		&-sub
 			@extend %subHead
+	&-box
+		//background-color: #f7f7f7
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		flex-flow: row wrap
+		justify-content: space-around
+		margin: auto
+		max-width: 1200px
+		position: relative
+		&-line
+			border-bottom: 1px solid #000
+			//box-shadow: 0 0 20px
+			margin: 2rem auto 0
+			//padding: 1rem 0
+			width: 50px
+		&-line.dev
+			border-bottom-color: $color1
+		&-line.anim 
+			border-bottom-color: $color2
+		&-line.plugin
+			border-bottom-color: $color3
+		&-line.cms
+			border-bottom-color: $color4
+		&-descr
+			color: $parColor
+			font-size: 1.2rem
+			line-height: 1.5
+			padding-top: 2rem
+		&-item
+			background-color: #fff
+			border-radius: 50%
+			box-sizing: border-box
+			margin: -60px auto 0
+			padding: 1.5rem
+			width: 120px
+			&-content
+				display: -webkit-flex
+				display: -moz-flex
+				display: -ms-flex
+				display: -o-flex
+				display: flex
+				flex-flow: column wrap
+			&-wrap
+				//min-width: 300px
+				text-align: center
+				width: 24%
+				h1
+					color: $parColor
+					font-size: 1.5rem
+					text-transform: uppercase
+			img
+				//opacity: 0
+				width: 100%
+		&-tech
+			padding: 4rem
+			&-item
+				display: -webkit-flex
+				display: -moz-flex
+				display: -ms-flex
+				display: -o-flex
+				display: flex
+				flex-flow: row wrap
+			
+				&-name
+					border: 2px solid $mainColor
+					border-radius: 50%
+					color: $mainColor
+					font: .8rem/50px $mainHeading
+					height: 50px
+					margin: 1rem 0
+					text-align: center
+					text-transform: uppercase
+					width: 50px
+					
+					img
+						width: 100%
+				
+						
 	&-blocks
 		align-items: center
 		display: -webkit-flex
@@ -398,7 +326,6 @@ textarea:-ms-input-placeholder
 				padding-top: 1rem
 				text-align: center
 			.fa
-				color: $mainColor
 				font-size: 3.4rem
 				transform: scale(0)
 				transition: all .35s linear
@@ -427,14 +354,8 @@ textarea:-ms-input-placeholder
 			&_light
 				background-color: hsl(180,100%,33%)
 		&-wrap
-			align-items: center
-			display: -webkit-flex
-			display: -moz-flex
-			display: -ms-flex
-			display: -o-flex
-			display: flex
-			flex-flow: row wrap
-			justify-content: center
+			max-width: 1200px
+			margin: 1rem auto 0
 		&-diagram
 			//width: 50%
 		&-labels
@@ -459,15 +380,21 @@ textarea:-ms-input-placeholder
 				margin-left: 20px
 		&-progress
 			align-items: flex-end
+			//background-color: hsl(0, 0%, 97%)
 			box-sizing: border-box
 			display: -webkit-flex
 			display: -moz-flex
 			display: -ms-flex
 			display: -o-flex
 			display: flex
+			//display: none
 			flex-flow: row wrap
-			justify-content: center
+			justify-content: space-around
+			padding: 0 0 2rem
+			width: 100%
+			
 			&-wrap
+
 				position: absolute
 				right: 10%
 				width: 55%
@@ -477,32 +404,101 @@ textarea:-ms-input-placeholder
 					width: 145px
 					&-text
 						color: $mainHeadingsColor
+
 						font: 1rem 'RobotoBold'
 			&-item
-				background-color: #fafafa
-				border-radius: 5%
+				align-items: center
+				background-color: #fff
+				//background: url(../img/html.svg) center center/ 90px 90px no-repeat #fff
+				border-radius: 50%
+				box-sizing: border-box
 				cursor: pointer
-				padding: 20px 0
-				text-align: center
-				width: 140px
+				display: -webkit-flex
+				display: -moz-flex
+				display: -ms-flex
+				display: -o-flex
+				display: flex
+				height: 80px
+				justify-content: center
+				//padding: 2.7rem
+				margin: 20px 0
+				position: relative
+				//text-align: center
+				width: 80px
+				strong
+					color: $parColor
+					font: 1.2rem $mainHeading
+					left: 50%
+					position: absolute	
+					top: 50%
+					transform: translate(-50%, -50%)
+				&-wrap
+					padding: .5rem
+					text-align: center
+					
 				&-text
-					color: $mainHeadingsColor
-					font: 1.2rem 'RobotoBold'
+					//text-shadow: 0 0 20px
+					color: $parColor
+					font: 1.1rem 'RobotoBold'
 					&_normal
 						font: 1rem 'RobotoRegular'
+	&-progress
+		height: 150px
+		margin: auto
+		overflow: hidden
+		width: 300px
+		&-diagram
+			background-color: #928b60
+			border-radius: 50% 50% 0 0/100% 100% 0 0
+			height: 100%
+			position: relative
+			width: 100%
+			&:before
+				background-color: #2c305a
+				border-radius: 50% 50% 0 0/100% 100% 0 0
+				content: ''
+				height: 100%
+				position: absolute
+				transform: rotateZ(-162deg)
+				transform-origin: 150px 150px
+				width: 100%
+				z-index: 2
+			&:after
+				background-color: #2d828e
+				border-radius: 50% 50% 0 0/100% 100% 0 0
+				content: ''
+				height: 100%
+				position: absolute
+				transform: rotateZ(-135deg)
+				transform-origin: 150px 150px
+				width: 100%
+				z-index: 1
 			
 .work
-	background-color: #fafafa
-
-	padding: 4rem 20px
+	//background: fixed url(../img/code.png) center top/cover no-repeat
+	background-color: rgba(247,247,247,.9) //#f7f7f7
+	background-image: linear-gradient(180deg,rgba(247,247,247,1), rgba(247,247,247,.9) )
+	padding: 6rem 20px
+	position: relative
 	text-align: center
+	&:after
+		//background-color: rgba(255,255,255,.95)
+		//background-image: radial-gradient(at center, #fff, #dee)
+		content: ''
+		height: 100%
+		left: 0
+		position: absolute
+		top: 0
+		width: 100%
 	&-menu-item
 		@extend %menuItem
+		position: relative
+		z-index: 1
+		//text-align: right
 		&-sub
 			@extend %subHead
 			background-color: transparent
-			&-link
-				color: $mainColor
+			a
 				transition: all .35s
 				&:hover
 					color: $waterColor
@@ -512,7 +508,9 @@ textarea:-ms-input-placeholder
 		
 		&-wrap
 			margin: 20px auto 0
-			max-width: 920px
+			max-width: 960px
+			position: relative
+			z-index: 1
 		&-block
 			border-bottom: 1px solid #ddd
 			display: -webkit-flex
@@ -536,37 +534,75 @@ textarea:-ms-input-placeholder
 					order: 1
 					padding-left: 0
 			&-descr
+				//align-items: stretch
 				box-sizing: border-box
+				display: -webkit-flex
+				display: -moz-flex
+				display: -ms-flex
+				display: -o-flex
+				display: flex
+				flex-flow: column wrap
+				justify-content: space-between
 				max-width: 400px
 				text-align: center
 				&-heading
 					color: $mainHeadingsColor
-					font: 2rem 'RobotoBold'
+					font: bold 2rem 'RobotoBold'
 					margin: 20px 0
 				&-par
 					color: $parColor
 					font: 1rem $subheading
 					line-height: 1.7rem
-					margin: 15px 0 40px
+					margin: 15px 0
+				&-tech
+					color: #111//$mainHeadingsColor
+					font-size: 1.7rem
+					//1.7rem 'Pacifico', cursive//$subheading
+					
+					line-height: 1.7rem
+				
+					padding: 1.5rem 0
+					text-align: center
+		
+				&-list
+					display: -webkit-flex
+					display: -moz-flex
+					display: -ms-flex
+					display: -o-flex
+					display: flex
+					flex-flow: row wrap
+					justify-content: center
+					&-item
+						background-color: hsl(191, 45%, 45%)// #406da7//$mainHeadingsColor
+						border-radius: 3px
+						color: #fff
+						margin: .5rem 1rem .5rem 0
+						padding: .1rem .5rem
 				&-btn
 					@extend %btnBdRad
-					border: 2px solid $mainColor
-					color: #2A3A3F
+					border-radius: 0
+					color: #fff//#2A3A3F
+					display: inline-block
 					font: .85rem 'RobotoBold'
+					left: 50%
+					//margin: 20px auto 0
 					padding: 12px 30px
+					position: absolute
 					text-transform: uppercase
+					top: 35%
+					transform: rotateX(90deg) translateX(-50%)
+					transform-origin: center
 					transition: all .35s
 					&:hover
-						border-color: $mainColorHover//$mainColor
-						background-color: $mainColorHover//$mainColor
+						
 						//background-image: linear-gradient(to right, $mainColor, $mainColor2) 
 						//box-shadow: -2px 2px 10px #333
-						color: #fff
+						//color: #fff
 						//padding: 12px 35px
 					&:active
 						box-shadow: 0 0 0 transparent
 				.fa
-					color: $mainColor
+					
 					font-size: .5rem
 					vertical-align: middle
 				&-sub
@@ -577,9 +613,32 @@ textarea:-ms-input-placeholder
 					vertical-align: middle
 			&-img
 				box-sizing: border-box
+				
 				max-width: 400px
-				&-example
+				overflow: hidden
+				position: relative
+				
+				
+				//&:after
+					//background-color: rgba(0,0,0,.5)
+					//content: ''
+					//height: 68%
+					//left: 0
+					//position: absolute
+					//right: 3%
+					//top: 5%
+					//width: 100%
+				&:hover img
+					filter: brightness(20%)
+				&:hover .work-content-block-descr-btn
+					transform: rotateX(0) translateX(-50%)
+				img
+					filter: brightness(80%)
+					height: auto
+					
+					transition: all .5s ease-in-out
 					width: 100%
+					
 				&-list
 					display: -webkit-flex
 					display: -moz-flex
@@ -604,7 +663,7 @@ textarea:-ms-input-placeholder
 				width: 100%
 				&-cite
 					color: #555//$citeColor
-					font: 1rem $subheading
+					font: 1rem/2 $subheading
 				&-wrap
 					padding: 50px 0 0
 				&-photo
@@ -624,21 +683,132 @@ textarea:-ms-input-placeholder
 					font: 1rem $subheading
 					margin: 20px 0
 					vertical-align: middle
-$discDiam: 150px
-$discTop: $discDiam / 2
-$padding: 15px
-$paddingDiam: $discDiam + 2 * $padding
-$mapHeight: 60vh
+
+.projects
+	background-color: #fff
+	padding: 4rem 20px
+	&-content-wrap
+		margin: 2rem auto
+		max-width: 960px
+	&-items-wrap
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		flex-flow: row wrap
+		justify-content: space-around
+	&-item
+		
+		//box-sizing: border-box
+		//height: 150px
+		margin: 1rem
+		min-width: 285px
+		overflow: hidden
+		
+		text-align: center
+
+		width: 30%
+		&-wrap
+			
+			border-radius: 5px
+			overflow: hidden
+			position: relative
+			
+			&:hover .projects-item-img
+				transform: scale(1.2)
+		&-img
+			align-items: center
+			display: -webkit-flex
+			display: -moz-flex
+			display: -ms-flex
+			display: -o-flex
+			display: flex
+			height: 150px
+			justify-content: center
+			transition: all .6s ease-in-out
+			width: 100%
+		&-link
+			font-size: 1.7rem
+			font-weight: bold
+			height: 100%	
+			left: 0
+			line-height: 150px
+			//padding: 3rem 0
+			// opacity: .7
+			position: absolute
+			top: 0
+			width: 100%	
+			span
+				color: #a80040
+				font-family: 'RobotoBold'
+		&-descr
+			color: #7a898e
+			margin-top: 1rem
+			a
+				color: #406da7
+		&:first-child
+
+			.projects-item-img
+				background: url(../img/projects/logo_tire.png) center/115px auto no-repeat #464646
+				//filter: brightness(60%)
+				box-shadow: inset 240px 150px rgba(0,0,0,.2)
+		&:nth-child(2) 
+			.projects-item-img
+				background: url(../img/projects/gallery.png) left center/ cover no-repeat
+				//filter: brightness(40%)
+				box-shadow: inset 240px 150px rgba(0,0,0,.5)
+			.projects-item-link
+				font-family: 'Sedgwick Ave', cursive
+		&:nth-child(3)
+			.projects-item-wrap
+				box-shadow: inset 240px 150px rgba(0,0,0,.2)
+				background-image: radial-gradient(at center, #0dc4c7, #007b76) 
+			
+			.projects-item-link
+				font-style: italic
+				color: rgba(255,255,255,1)
+				opacity: 1
+		&:nth-child(4)
+			.projects-item-img
+				background: url(../img/projects/old-portfolio.jpg) left center/ cover no-repeat
+				//filter: brightness(40%)
+				box-shadow: inset 240px 150px rgba(0,0,0,.5)
+			.projects-item-link
+				font-family: 'Sedgwick Ave', cursive
+
+		&:nth-child(4)
+			.projects-item-img
+				background: url(../img/projects/countdown.png) left -52px/ cover no-repeat
+				box-shadow: inset 240px 150px rgba(0,0,0,.5)
+			.projects-item-link
+				font-family: 'Sedgwick Ave', cursive
+
+
 .contacts
-	background-color:  #fff//$mainColor// rgba(6, 187, 194, .5)//
-	display: -webkit-flex
-	display: -moz-flex
-	display: -ms-flex
-	display: -o-flex
-	display: flex
-	flex-flow: row wrap
-	padding: 0 0 4rem 0
+	background-color:  #252a30//#00272f//$mainColor// rgba(6, 187, 194, .5)//
+	//background-color: #fafcf8
+	//display: -webkit-flex
+	//display: -moz-flex
+	//display: -ms-flex
+	//display: -o-flex
+	//display: flex
+	//flex-flow: row wrap
+	padding: 4rem 20px
+	
 	position: relative
+	&-text
+		margin: auto
+		max-width: 730px
+		text-align: center
+		&-heading
+			color: #fff
+			font: bold 2rem $subheading
+			margin-bottom: 2rem
+			
+		&-par
+			color: #fff//#89835a//#acbec3//#7a898e
+			font: 1.2rem/1.5 $subheading
 	&-menu-item
 		@extend %menuItem
 		color: $parColor
@@ -673,7 +843,7 @@ $mapHeight: 60vh
 			transform-origin: bottom
 			width: 100%
 		&-bottom
-			background-color: rgba(224, 239, 239, 1)//#fff//rgba(6, 187, 194, 1)
+			
 			height: $paddingDiam / 2
 			width: 100%
 	&-photo
@@ -696,9 +866,15 @@ $mapHeight: 60vh
 		&-img
 			width: 100%
 	&-soc
+		display: -webkit-flex
+		display: -moz-flex
+		display: -ms-flex
+		display: -o-flex
+		display: flex
+		justify-content: center
 		margin-top: 120px
+		width: 180px
 		.fa
-			color: $mainColor
 			font-size: 2rem
 			margin: 0 12px
 			
@@ -710,34 +886,31 @@ $mapHeight: 60vh
 		display: flex
 		flex-flow: row wrap
 		justify-content: space-between
-		margin: 60px 0 0
+		margin: 2rem 0 0
 		max-width: 600px
 		padding: 0 20px
 		&-input
-			@include inputParam($bgInput, 100%, 0)
+			@include inputParam(100%, 0)
 			margin: 15px 0 0
 			&:focus
-				box-shadow: 0 0 10px $mainColor
+				
 				transition: all .35s
 		&-text
-			@include inputParam($bgInput, 100%)
+			@include inputParam(100%)
 			resize: none
 			&:focus
-				box-shadow: 0 0 10px $mainColor
+				
 				transition: all .35s
 		&-submit
-			@include inputParam(transparent, auto)
-			border: 2px solid $mainColor
-			color: $mainColor//#2A3A3F//
+			@include inputParam(auto)
+			background-color: transparent
 			cursor: pointer
 			font: .85rem 'RobotoBold'
 			margin-right: 15px
 			padding: 12px 30px
 			text-transform: uppercase
 			transition: all .35s
-			&:hover
-				background-color: $mainColor
-				color: #fff
+			
 		&-status
 			display: inline-block
 			font: .85rem "RobotoRegular"
@@ -746,7 +919,7 @@ $mapHeight: 60vh
 		
 .error
 	animation: fadeIn 600ms ease-in-out forwards
-	background-color: rgba(255,0,0,.5)
+	background-color: rgba(241, 81, 81, 1)
 	border-radius: 10px
 	box-sizing: border-box
 	color: #fff
@@ -755,17 +928,17 @@ $mapHeight: 60vh
 	width: 100%
 .correct
 	animation: fadeIn 600ms ease-in-out forwards
-	background-color: $bgInput
+	background-color: transparent
 	border-radius: 10px
 	box-sizing: border-box
-	color: $mainColor
+	color: #fff
 	display: inline-block
 	font-weight: bold
 	padding: 14px
 	width: 100%
 .errorTxt
-	box-shadow: 0 0 10px #ff0000
-	color: #0e0e0e
+	background-color: #f05050
+	color: #fff
 	transition: all .35s
 
 @keyframes fadeIn
@@ -778,21 +951,49 @@ $mapHeight: 60vh
 		opacity: 1
 		transform: scale(1)
 .about
-	background-color: #fff// rgba(6, 187, 194, .5)
+	background-color: rgba(64, 109, 176, .86)//$mainHeadingsColor//rgba(247,247,247,1)// rgba(6, 187, 194, .5)
 	//border-top: 15px solid rgba(6, 187, 194, .5)
-	
-	padding: 4rem
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	flex-flow: row wrap
+	//padding: 1rem 2rem 8rem
 	position: relative
-	&-wrap
+	&:after
+		//background: url(../img/dennis.jpg) left center/ 50% auto no-repeat
+		content: ''
+		height: 100%
+		left: 0
+		position: absolute
+		top: 0
+		width: 100%
+		z-index: -1
+	&-photo, &-wrap
+		box-sizing: border-box
+		//min-width: 500px
 		margin: auto
-		width: 70%
+		//max-width: 600px
+		width: 100%
+	&-photo
+		
+		margin-left: auto
+		padding: 2rem
+	&-wrap
+		background-color: #f7f7f7
+		border-radius: 10px
+		margin-right: auto
+		padding: 6rem 2rem
 	&-menu-item
 		@extend %menuItem
-		color: $mainColor//$mainHeadingsColor
-		text-align: left
+		color: #fff//$mainHeadingsColor
+		font-size: 4rem
+		line-height: 1
+		text-align: center
 	&-text
 		color: $parColor
-		font: .9rem/1.7rem $subheading
+		font: 1.2rem/1.5 $subheading
 		&-link
 			color: $mainColor
 	&-img
@@ -1024,3 +1225,24 @@ footer
 		opacity: 0
 	to
 		opacity: 1
+
+
+
+//@for $i from 1 through 10
+	//.skills-box-tech-item-prog:hover .skills-box-tech-item-prog-circle:nth-of-type(#{$i})
+		//animation: scale .2s #{$i/20}s ease-in-out
+
+@keyframes scale
+	0%
+		transform: scale(1)
+	50%
+		transform: scale(1.5)
+	100%
+		transform: scale(1)
+@-webkit-keyframes scale
+	0%
+		transform: scale(1)
+	50%
+		transform: scale(1.5)
+	100%
+		transform: scale(1)
