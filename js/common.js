@@ -233,7 +233,7 @@ form.submit(function (evtObj) {
   evtObj.preventDefault();
   resetErrors();
 
-  var url = 'handler.php';
+  var url = '../handler.php';
   $.each($('form input, form textarea'), function(i, v) {
     if(v.type !== 'submit') {
       data[v.name] = v.value;
